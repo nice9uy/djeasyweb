@@ -1,0 +1,14 @@
+{
+  "name": "easyweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./static/src/css/input.css -o ./static/dist/output.css --watch --minify"
+  },
+  "author": "abdul rachman",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+  }
+}
