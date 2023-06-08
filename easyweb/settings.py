@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0zfka0^7*8le^9hho6t#qnh5j15*r23+k4432yo$9+cr8h3un4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost' ,'127.0.0.1']
 
 # Application definition
 
@@ -67,7 +67,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates'],
-        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -130,11 +129,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "static"
 
 COMPRESS_ROOT = BASE_DIR / 'static'
 
@@ -147,7 +142,10 @@ STATICFILES_FINDERS = (
     )
 
 STORAGES = {
-    # ...
+    # "default": {
+    #     "BACKEND": "django.core.files.storage.FileSystemStorage",
+    # },
+    # # ...
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
