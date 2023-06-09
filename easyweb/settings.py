@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-0zfka0^7*8le^9hho6t#qnh5j15*r23+k4432yo$9+cr8h3un4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost' ,'127.0.0.1']
+ALLOWED_HOSTS = ["localhost" ,"127.0.0.1"]
 
 # Application definition
 
@@ -128,11 +129,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
 
-STATIC_ROOT = BASE_DIR / "static"
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
+
+if DEBUG:
+  STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+else:
+
+  STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# STATIC_ROOT = BASE_DIR / "static"
 
 COMPRESS_ROOT = BASE_DIR / 'static'
-
 COMPRESS_ENABLED = True
 
 STATICFILES_FINDERS = ( 
@@ -141,17 +154,24 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
     )
 
-STORAGES = {
-    # "default": {
-    #     "BACKEND": "django.core.files.storage.FileSystemStorage",
-    # },
-    # # ...
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# STORAGES = {
+#     # "default": {
+#     #     "BACKEND": "django.core.files.storage.FileSystemStorage",
+#     # },
+#     # # ...
+#     "staticfiles": {
+#         "BACKEND": " django.contrib.staticfiles.storage.StaticFilesStorage",
+#     },
+# }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# DEBUG_PROPAGATE_EXCEPTIONS = True
