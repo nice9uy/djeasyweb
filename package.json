@@ -4,11 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i ./static/src/css/input.css -o ./static/dist/output.css --watch --minify"
+    "tailwind": "npx tailwindcss -i ./static/src/css/input.css -o ./static/dist/output.css --watch --minify",
+    "webpack": "webpack --config webpack.config.js",
+    "start": "concurrently \"\"npm run tailwind arg\" \"npm run webpack\""
   },
   "author": "abdul rachman",
   "license": "MIT",
   "devDependencies": {
-    "tailwindcss": "^3.3.2"
+    "concurrently": "^8.2.0",
+    "tailwindcss": "^3.3.2",
+    "terser-webpack-plugin": "^5.3.9",
+    "webpack": "^5.86.0",
+    "webpack-cli": "^5.1.4"
   }
 }

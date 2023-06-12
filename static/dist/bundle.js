@@ -1,0 +1,1 @@
+(()=>{const d=new Set;d.add("a"),d.add("b"),d.add("c"),document.getElementById("demo").innerHTML=d.size})(),console.log("sdkvhsdfifhsdifysiufd");
